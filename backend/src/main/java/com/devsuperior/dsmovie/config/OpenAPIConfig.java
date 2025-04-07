@@ -24,7 +24,7 @@ public class OpenAPIConfig {
                 .version("v0.0.1")
                 .license(new License()
                     .name("Apache 2.0")
-                    .url("https://github.com/7E0n4Rd0/dsmovie-ref")
+                    .url("https://github.com/7E0n4Rd0/DSMovie?tab=Apache-2.0-1-ov-file")
                 )
             );
     }
