@@ -12,4 +12,4 @@ sistema calcula a média das notas de todos usuários, e armazena essa nota méd
 entidade Movie, juntamente com a contagem de votos (count).
 
 ### Modelo de Domínio
-![diagrama](assets/orm_model.png)
+![diagrama](backend/assets/orm_model.png)
