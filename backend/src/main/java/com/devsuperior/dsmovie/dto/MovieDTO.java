@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.validator.constraints.URL;
 
 import com.devsuperior.dsmovie.entities.MovieEntity;
@@ -17,10 +18,12 @@ public class MovieDTO implements Serializable {
 
 	private static final DecimalFormat df = new DecimalFormat("#.##", new DecimalFormatSymbols(Locale.US));
 
+	@Schema(description = "Database generated movie ID")
 	private Long id;
-	
+
 	@NotBlank(message = "Required field")
 	@Size(min = 5, max = 80, message = "Title must be between 5 and 80 characters")
+	@Schema(description = "Movie title")
 	private String title;
 	
 	@PositiveOrZero(message = "Score should be greater than or equal to zero")
