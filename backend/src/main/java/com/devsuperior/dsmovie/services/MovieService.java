@@ -31,7 +31,7 @@ public class MovieService {
 		Page<MovieEntity> result = repository.searchByTitle(title, pageable);
 		return result.map(x -> new MovieDTO(x)
 				.add(
-					linkTo(methodOn(MovieController.class).findAll(x.getTitle(), null))
+					linkTo(methodOn(MovieController.class).findAll(x.getTitle(), pageable))
 						.withSelfRel())
 				.add(
 					linkTo(methodOn(MovieController.class).findById(x.getId()))
