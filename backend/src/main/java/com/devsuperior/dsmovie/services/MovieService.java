@@ -1,5 +1,6 @@
 package com.devsuperior.dsmovie.services;
 
+import com.devsuperior.dsmovie.controllers.MovieController;
 import com.devsuperior.dsmovie.dto.MovieGenreDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -28,13 +29,27 @@ public class MovieService {
 	@Transactional(readOnly = true)
 	public Page<MovieDTO> findAll(String title, Pageable pageable) {
 		Page<MovieEntity> result = repository.searchByTitle(title, pageable);
-		return result.map(x -> new MovieDTO(x));
+		return result.map(x -> new MovieDTO(x)
+				.add(
+					linkTo(methodOn(MovieController.class).findAll(x.getTitle(), null))
+						.withSelfRel())
+				.add(
+					linkTo(methodOn(MovieController.class).findById(x.getId())).withRel("GET movie by id")
+				)
+			);
 	}
 
 	@Transactional(readOnly = true)
 	public Page<MovieGenreDTO> findAllMovieGenre(String title, Pageable pageable) {
 		Page<MovieEntity> result = repository.searchByTitle(title, pageable);
-		return result.map(x -> new MovieGenreDTO(x));
+		return result.map(x -> new MovieGenreDTO(x)
+				.add(
+						linkTo(methodOn(MovieController.class).findAllV1(x.getTitle(), null))
+								.withSelfRel())
+				.add(
+						linkTo(methodOn(MovieController.class).findByIdV1(x.getId())).withRel("GET movie by id")
+				)
+		);
 	}
 
 	@Transactional(readOnly = true)
