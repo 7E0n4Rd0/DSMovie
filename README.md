@@ -1,6 +1,4 @@
-# **Desafio 04 - Curso Java Spring Expert: Módulo 05**
-
-## DSMovie
+# DSMovie
 
 ### Sobre o projeto
 Este é um projeto de filmes e avaliações de filmes. A visualização dos dados dos filmes é
